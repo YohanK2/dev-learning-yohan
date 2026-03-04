@@ -1,0 +1,118 @@
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#22c55e',
+                        'eco-blue': '#3b82f6',
+                        'eco-earth': '#8b5cf6',
+                        'primary': '#10b981',
+                        'secondary': '#3b82f6'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #22c55e 0%, #3b82f6 50%, #8b5cf6 100%);
+        }
+        
+        .hero-bg-dark {
+            background: linear-gradient(135deg, #166534 0%, #1e40af 50%, #6b21a8 100%);
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .particle-dark {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #1e293b;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #3b82f6;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+        
+        .slider .sun, .slider .moon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+        
+        .slider .sun {
+            left: 8px;
+            color: #fbbf24;
+        }
+        
+        .slider .moon {
+            right: 8px;
+            color: #e2e8f0;
+        }
+        
+        input:checked + .slider .sun {
+            opacity: 0;
+        }
+        
+        input:not(:checked) + .slider .moon {
+            opacity: 0;
+        }
